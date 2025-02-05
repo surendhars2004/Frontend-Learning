@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    
+        .container {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            padding: 0px 20px 40px 20px;
+        }
+    
+        h1 {
+            font-size: 28px;
+            color: #444;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 100px;
+        }
+    
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    
+        ol {
+            padding: 0;
+            margin: 20px 0;
+            list-style: none;
+        }
+    
+        ol li {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            text-align: left;
+        }
+    
+        ol li:hover {
+            background-color: #e0e0e0;
+            transition: 0.3s;
+        }
+    
+        .btn {
+            padding: 14px 32px;
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            border: 1px solid black;
+            font-size: 16px;
+            border-radius: 16px;
+            transition: all 0.5s ease;
+            font-weight: 600;
+        }
+    
+        .btn:hover {
+            color: black;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    
+        .highlight {
+            background-color: lightgreen;
+            font-weight: bold;
+        }
+        input{
+            font-size: 16px;
+            width: 400px;
+            padding: 16px 5px;
+            border-radius: 10px;
+            outline: none;
+            border: 2px solid gray;
+            background-color: #e0e0e0;
+            margin: 5px;
+        }
+        input:focus{
+            background-color: #d0d0d0;
+        }
+        .changecolor{
+            background-color: lightgreen !important; 
+            color: white !important;
+            font-weight: 700;
+        }
+        .defaultclass{
+            background-color: red;
+            color: white;
+            padding: 16px 10px; border-radius: 16px;
+        }
+        .display {
+        margin-top: 10px;
+        padding: 12px;
+        background-color: #d1ffd6;
+        border: 2px solid #4caf50;
+        border-radius: 8px;
+        font-size: 18px;
+        color: #2e7d32;
+        font-weight: bold;
+        display: block;
+       }
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+    <!--   challenge == > 01 -->
+        <h1>Challenge 1</h1>
+        <p id="targetp">Chenge the content of this paragraph when button is click</p>
+        <button id="changebtn" class="btn">Change</button>
+
+    <!--   challenge == > 02 -->
+        <h1>Challenge 2</h1>
+        <p>highliht the Chennai when click the button</p>
+        <ol>
+            <li>Chennai</li>
+            <li>Delhi</li>
+            <li>Banglore</li>
+            <li>Kochin</li>
+        </ol>
+        <button id="highlight" class="btn">High light</button>
+
+    <!--   challenge == > 03 -->
+        <h1>Challenge 3</h1>
+        <p>Change the oreder location to Kochin</p>
+        <p>Order Location : <span id="target3">Chennai</span></p>
+        <button id="changeorder" class="btn">Change order to Kochin</button>
+
+        <!--   challenge == > 04 -->
+        <h1>Challenge 4</h1>
+        <p> Create and Add new elemnt to the list</p>
+        <ol id="addinlist">
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>
+            <li>Task 4</li>
+        </ol>
+        <button id="add" class="btn">Add new Item</button>
+
+    <!--   challenge == > 05 -->
+        <h1>Challenge 5</h1>
+        <p> Removing the dom elements</p>
+        <ol id="removelist">
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>
+            <li>Task 4</li>
+        </ol>
+        <button id="removebtn" class="btn">Remove task</button>
+
+    <!--   challenge == > 06 -->
+        <h1>Challenge 6</h1>
+        <p>Mouse Event Listners</p>
+        <button id="eventlistner" class="btn">Click Me</button>
+
+        <!--   challenge == > 07 -->
+        <h1>Challenge 7</h1>
+        <p> Event Delegation : select a item and also add new iten and we can select the new item dynamically</p>
+        <ol id="delegationId">
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>
+            <li>Task 4</li>
+        </ol>
+        <button id="delegationbtn" class="btn">Click Me</button>
+
+        <!--   challenge == > 08 -->
+        <h1>Challenge 8</h1>
+        <p> feedback submission handling </p>
+        <form  id="feedbackform">
+            <label for="feedbackinput">Give your feedback :</label> <br> 
+            <input type="text" id="feedbackinput" placeholder="Start writing feedback" required>
+            
+            <button type="submit" class="btn">Submit feedback</button>
+        </form>
+        <p id="feedbackdisplay"></p>
+
+        <!--   challenge == > 09 -->
+        <h1>Challenge 9</h1>
+        <p>Change the below paragraph if  DOM content is loaded </p>
+        <p style="background-color: rgb(235, 16, 16); color:#fff; padding: 16px 10px; border-radius: 16px;" id="domStatus">is DOM loaded ??</p>
+       
+        <!--   challenge == > 10 -->
+        <h1>10  CSS Manipulation</h1>
+        <p>Change or toggele the below text when button is clicked </p>
+        <p class="defaultclass" id="toggleid">Change the color</p>
+        <button id="toggleBtn" class="btn">Click Me</button>
+
+         <!--   challenge == > 11 -->
+         <h1>Challenge 11</h1>
+         <p> Click the Element to remove using event deligation</p>
+         <ol id="toremove">
+             <li>Task 1</li>
+             <li>Task 2</li>
+             <li>Task 3</li>
+             <li>Task 4</li>
+         </ol>
+    </div>
+
+
+    <script defer>
+       /*  challenge == > 01  */
+        document.getElementById('changebtn').addEventListener('click', ()=>{
+            let p = document.getElementById('targetp')
+            console.log(p.innerText)
+            p.innerText="hey challenge 1 completed Content is Changed"
+        })
+
+        /*  challenge == > 02  */
+        document.getElementById('highlight').addEventListener('click', ()=>{
+            let list = document.querySelector('ol')
+            console.log(list.firstElementChild.innerText)
+            list.firstElementChild.classList.add('highlight')
+        })
+        /*  challenge == > 03  */
+        document.getElementById('changeorder').addEventListener('click', ()=>{
+            let hold = document.getElementById('target3')
+            console.log(hold.innerText)
+            hold.innerText="Kochin"
+        })
+        /*  challenge == > 04  */
+        document.getElementById('add').addEventListener('click', ()=>{
+            let newitem= document.createElement('li')
+            let list = document.getElementById('addinlist')
+            newitem.innerText= "Task "+(list.children.length+1)
+            console.log(newitem)
+            document.getElementById('addinlist').appendChild(newitem)
+
+        })
+        /*  challenge == > 05  */
+        document.getElementById('removebtn').addEventListener('click', ()=>{
+            let removeitem= document.getElementById('removelist')
+            console.log(removeitem.lastElementChild)
+            removeitem.lastElementChild.remove()
+            console.log(removeitem)
+        })
+        /*  challenge == > 06  */
+        document.getElementById('eventlistner').addEventListener('click', ()=>{
+            // mouseover,mouseout,dblclick,click
+            alert("Event is triggered")
+        })
+        //  challenge == > 07 
+        document.getElementById('delegationId').addEventListener('click',(event)=>{
+            if(event.target.tagName === 'LI'){
+                console.log(event.target.innerText)
+                event.target.style.backgroundColor = 'lightgreen'
+            }
+        })
+        document.getElementById('delegationbtn').addEventListener('click', ()=>{
+            let newitem= document.createElement('li')
+            let list = document.getElementById('delegationId')
+            newitem.innerText= "Task "+(list.children.length+1)
+            console.log(newitem)
+            document.getElementById('delegationId').appendChild(newitem)
+
+        })
+        //  challenge ==> 08
+        document.getElementById('feedbackform').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            let val = document.getElementById('feedbackinput');
+            const feedbackDisplay = document.getElementById('feedbackdisplay');
+
+            feedbackDisplay.innerText = `Feedback: ${val.value}`;
+            feedbackDisplay.classList.add('display');
+            val.value=""
+        });
+        // challenge ==> 09
+        document.addEventListener('DOMContentLoaded',()=>{
+            document.getElementById('domStatus').style.backgroundColor="lightgreen"
+            document.getElementById('domStatus').innerText = "Yeah DOM is loaded"
+        })
+        //challenge ==> 10
+        document.getElementById('toggleBtn').addEventListener('click', () => {
+        document.getElementById('toggleid').classList.toggle('changecolor');
+        });
+        //challenge == > 11
+        document.getElementById('toremove').addEventListener('click',(event)=>{
+            if(event.target.tagName === 'LI'){
+                console.log(event.target.innerText)
+                event.target.remove()
+            }
+        })
+    </script>
+</body>
+</html>

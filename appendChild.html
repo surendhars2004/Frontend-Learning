@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .container{
+            position: relative;
+        }
+        nav{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: rgb(199, 132, 45);
+            position: sticky;
+            top: 0;
+        }
+        .addbtn{
+            padding: 12px 30px;
+            border: none;
+            background-color: white;
+            color: orange;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 19px;
+        }
+        .logo{
+            width: 120px;
+            border-radius: 50%;
+            height: 50px;
+            object-fit: cover;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .box{
+            width: 300px;
+            margin: 10px;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(203, 202, 202);
+            border-radius: 16px;
+            flex-grow: 1;
+        }
+        .form{
+            border: 1px solid rgb(180, 178, 178);
+            width: 320px;
+            margin: 100px auto;
+            padding: 20px ;
+            border-radius: 16px;
+            position: absolute;
+            left: 38%;
+            top: 0;
+            background-color: rgb(212, 200, 200);
+        }
+        input{
+            margin: 5px;
+            width: 290px;
+            outline: none;
+            border: 2px solid rgb(198, 198, 216);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        input:hover{
+            border: 2px solid gray;
+        }
+        h3{
+            text-align: center;
+            margin: 10px;
+            margin-bottom: 20px;
+        }
+        .btn{
+            padding: 13px 46px;
+            border: 1px solid white;
+            color: white;
+            font-weight: 700;
+            background-color:rgb(199, 132, 45);
+            cursor: pointer;
+            border-radius: 16px;
+            margin: 8px auto;
+            font-size: 16px;
+            display: flex;
+        }
+        .btn:hover{
+            background-color: rgb(255, 128, 0);
+        }
+        .d-none{
+            display: none;
+        }
+        .appendImg{
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 12px;
+        }
+        .flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container">
+        <nav>
+            <img class="logo" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/91631e116794391.60698dbc55f96.jpg" alt="">
+            <button class="addbtn" onclick="openform()">Add Item</button>
+            
+        </nav>
+
+        <div  id="content" class="content"></div>
+
+        <div id="form" class="form d-none">
+            <h3>Add New Item</h3>
+            <p for="">Enter Name</p>
+            <input id="name" type="text">
+            <p for="">Enter Price</p>
+            <input id="price" type="text">
+            <p for="">Enter Description</p>
+            <input id="desc" type="text">
+            <p for="">Enter Img Url</p>
+            <input id="img" type="text">
+            <button id="submitbtn" onclick="submit()" class="btn">Add</button>
+        </div>
+
+    </div>
+
+    <script>
+        let form    = document.getElementById('form')
+        let content = document.getElementById('content')
+
+        function openform(){
+            form.classList.remove('d-none')
+        }
+        
+        function submit(){
+            let nameInput = document.getElementById('name').value
+            let priceInput = document.getElementById('price').value
+            let descInput = document.getElementById('desc').value
+            let imgInput = document.getElementById('img').value
+            let obj ={
+                name  : nameInput,
+                price : priceInput,
+                desc  : "Delicious, flavorful, savory, crispy, juicy, tender, aromatic, mouthwatering, hearty, delightful.",
+                img   : imgInput
+            }
+            form.classList.add('d-none')
+            console.log(obj)
+            additem(obj)
+        }
+
+        function additem(objs){
+            console.log(objs)
+
+            let box = document.createElement('div')
+            box.classList.add('box')
+
+            let image = document.createElement('img')
+            image.classList.add('appendImg')
+
+            let flex = document.createElement('div')
+            flex.classList.add('flex')
+
+            let name = document.createElement('h4')
+            let price = document.createElement('div')
+
+            let des = document.createElement('div')
+            des.style.fontSize='12px'
+            des.style.color='grey'
+
+            name.textContent=objs.name
+            price.textContent= "$"+objs.price
+            des.textContent=objs.desc
+            image.src=objs.img
+
+            flex.appendChild(name)
+            flex.appendChild(price)
+
+            box.appendChild(image)
+            box.appendChild(flex)
+            box.appendChild(des)
+
+            content.appendChild(box)
+        } 
+        
+    </script>
+</body>
+</html>
