@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script> 
+    // promise
+       /*  function fetch(){
+            return new Promise((resolve,reject)=>{
+                let status = 1
+                setTimeout(()=>{
+                    if(status==true){
+                        resolve("fetched successfylly!!!")
+                    }
+                    else{
+                        reject("Fetching failed")
+                    }
+
+                },3000)
+            })
+        }
+        fetch()
+        .then((success)=>{
+            console.log(success)
+        })
+        .catch((error)=>{
+            console.error(error)
+        }) */
+
+        // promise methods
+        function slow(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    if(1) resolve("slow")
+                    else reject("error from slow")
+                },500)
+            })
+        }
+        function medium(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    if(1) resolve("medium")
+                    else reject("error from medium")
+                },1000)
+            })
+        }
+        function fast(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    if(1) resolve("fast")
+                    else reject("error from fast")
+                },1500)
+            })
+        }
+
+        async function name(params) {
+            //all => Waits for all promises to resolve or any one to reject. Returns an array of results if all promises are resolved.
+
+             Promise.all([slow(),medium(),fast()])
+            .then((resolve)=> console.log("all method : ",resolve)) 
+            .catch((error)=> console.error(error))
+
+            // all selected => Waits for all promises to settle (either resolved or rejected). Returns an array of objects with status and value/reason.
+
+            Promise.allSettled([slow(),medium(),fast()])
+            .then((resolve)=> console.log("all settled : ",resolve)) 
+            .catch((error)=> console.error(error))
+            Promise.allSettled
+
+            //Returns the result of the first settled promise. it may resolve or reject
+            Promise.race([slow(),medium(),fast()])
+            .then((resolve)=> console.log("race : ",resolve)) 
+            .catch((error)=> console.error(error))
+            Promise.allSettled
+
+            // Returns the result of the first resolved promise. it returns aggregate error if all the promise rejected
+            Promise.any([slow(),medium(),fast()])
+            .then((resolve)=> console.log("any : ",resolve)) 
+            .catch((error)=> console.error(error))
+            Promise.allSettled
+            
+        }
+        name()
+    </script>
+</body>
+</html>

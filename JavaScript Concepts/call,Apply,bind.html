@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* call without argument */
+        const person1 ={
+            name : "sureyy",
+            charge : 10,
+            chargeBattery : function(){
+                this.charge=100;
+            }
+        }
+        console.log("person 1 before charging fun : ",person1)
+        person1.chargeBattery()
+        console.log("person 1 before charging fun : ", person1)
+
+        const person2 ={
+            name : "raji",
+            charge:20,
+        }
+        console.log("person 2: ",person2)
+        // call
+        person1.chargeBattery.call(person2)
+        console.log("person 2 charged  using person 1 charge function [without argument] : ",person2)
+ // ---------------------------------------------------------------------------------------------------
+ /*  call with argument */
+        const person3 ={
+            name : "sureyy",
+            charge : 10,
+            chargeBattery : function(a,b){
+                this.charge= this.charge + a + b;
+            }
+        }
+
+        const person4 ={
+            name : "raji",
+            charge:20,
+        }
+        console.log("person 4: ",person4)
+        // call
+        person3.chargeBattery.call(person4,20,40)
+        console.log("person 4 charged  using person 3 charge function [with argument] : ",person4)
+
+//--------------------------------------------------------------
+     /*  apply method ==> array*/
+        const person5 ={
+            name : "sureyy",
+            charge : 10,
+            chargeBattery : function(a,b,c){
+                this.charge= this.charge + a + b + c;
+            }
+        }
+
+        const person6 ={
+            name : "raji",
+            charge:20,
+        }
+        console.log("person 6: ",person6)
+        // call
+        person5.chargeBattery.apply(person6,[20,20,10])
+        console.log("person 6 charged  using person 5 charge function : ",person6)
+//--------------------------------------------------------------
+     /*  bind method */
+        const person7 ={
+            name : "sureyy",
+            charge : 10,
+            chargeBattery : function(a,b,c){
+                this.charge= this.charge + a + b + c;
+            }
+        }
+
+        const person8 ={
+            name : "raji",
+            charge:20,
+        }
+        console.log("person 8: ",person8)
+        // bind
+        let hold = person7.chargeBattery.bind(person8,[20,20,10])
+        console.log("before bind ==> person 8 charged  using person 7 charge function : ",person8)
+        hold()
+        console.log("after bind ==> person 8 charged  using person 7 charge function : ",person8)
+    </script>
+</body>
+</html>

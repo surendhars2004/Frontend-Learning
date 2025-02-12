@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        
+
+        // example 2
+        const num =[1,2,3]
+        num.forEach((n)=>{
+            console.log(n)
+        })
+
+        num.map((n)=>{
+            console.log(n)
+        })
+        //example 3
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then((respone) => respone.json())
+        .then((json)=> console.log(json))
+        // example 1
+        function respone(){
+            console.log("D : you will be alright , take the medicine")
+        }
+        function reply(response){
+            console.log("D : Hello Trisha i'm the doctor, how can i help you")
+            setTimeout(response,1000)
+        }
+        function greet(reply,respone){
+            console.log("u: Hello Trisha")
+            setTimeout(reply,1000,respone)
+        }
+        greet(reply,respone)
+
+        //chaining call back
+        function first(callback){
+            setTimeout(()=>{
+                console.log("first running...")
+                callback()
+            },3000)
+           
+        }
+        function second(callback){
+            setTimeout(()=>{
+                console.log("second running...")
+                callback()
+            },3000)
+           
+        }
+        function third(){
+            setTimeout(()=>{
+                console.log("third running...")
+            },3000)
+        }
+
+        first(() => second( () => third() ))
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Capturing and Bubbling</title>
+</head>
+<body>
+    <div id="grandparent" style="padding: 20px; background-color: lightgray;">
+        Grandparent
+        <div id="parent" style="padding: 20px; background-color: lightblue;">
+            Parent
+            <button id="child">Click Me</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("grandparent").addEventListener("click", function() {
+            alert("Grandparent Clicked! (Capturing Phase)");
+            console.log("Grandparent Clicked! (Capturing Phase)");
+        },true); // Capturing event
+
+        document.getElementById("parent").addEventListener("click", function() {
+            alert("Parent Clicked! (Capturing Phase)");
+            console.log("Parent Clicked! (Capturing Phase)");
+        }, { capture: true }); // Capturing event
+
+        document.getElementById("child").addEventListener("click", function() {
+            alert("Child Clicked! (Target Phase)");
+            console.log("Child Clicked! (Target Phase)");
+        });
+
+        document.getElementById("parent").addEventListener("click", function() {
+            alert("Parent Clicked! (Bubbling Phase)");
+            console.log("Parent Clicked! (Bubbling Phase)");
+        });
+
+        document.getElementById("grandparent").addEventListener("click", function() {
+            alert("Grandparent Clicked! (Bubbling Phase)");
+            console.log("Grandparent Clicked! (Bubbling Phase)");
+        });
+    </script>
+</body>
+</html>

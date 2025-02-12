@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btn1"> event handler by normal function</button>
+    <button id="btn2">event handler by arrow function</button>
+
+    <script>
+        // global context
+        console.log("Global context                            : ",this)
+
+        //unstrict mode
+        function callfn(){
+            console.log("Unstrict mode                             : ",this)
+        }
+        callfn()
+
+        //strict mode
+        function call(){
+            "use strict";
+            console.log("strict mode                               : ",this)
+        }
+        call()
+
+        //object method [ regular function ]
+        const obj1 = {
+            a:1,
+            call : function(){
+                console.log("object method [ regular function ]        : ",this)
+            }
+        }
+        obj1.call()
+
+        //object method [ arrow function ]
+        const obj2 = {
+            a:1,
+            call : () => {
+                console.log("object method [ arrow function ]          : ",this)
+            }
+        }
+        obj2.call()
+
+        //arrow function inside the normal function
+        const obj3 ={
+            a:1,
+            fn : function(){
+                const name = () => {
+                    console.log("object method [arrow fun in the normal fun] : ",this)
+                }
+            name()
+        }
+        }
+        obj3.fn()
+
+        //normal function inside the arrow function
+        const obj4 ={
+            a:1,
+            fn : ()=>{
+                function name(){
+                    console.log("object method [normal fun in the arrow fun] : ",this)
+                }
+            name()
+        }
+        }
+        obj4.fn()
+        
+        // event handler using normal function
+        document.getElementById('btn1').addEventListener('click',function(){
+            console.log("event handler by normal function          : ", this)
+        })
+        
+        // event handler using arrow function
+        document.getElementById('btn2').addEventListener('click',() => {
+            console.log("event handler by arrow function           : ", this)
+        })
+    </script>
+</body>
+</html>

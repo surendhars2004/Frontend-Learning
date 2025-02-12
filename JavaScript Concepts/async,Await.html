@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script> 
+       function user(id){
+        return new Promise((resolve , reject)=>{
+            setTimeout(()=>{
+                if(1){
+                    resolve({id: id, name: "arpit"})
+                }
+                else{
+                    reject("user function error")
+                }
+            },2000)
+        })
+       }
+
+       function subscription(userId){
+        return new Promise((resolve , reject)=>{
+            setTimeout(()=>{
+                if(1){
+                    resolve([{no: 1, subscription: "Zee Pack"},{no: 2, subscription: "Netflix"},{no: 3, subscription: "Amazon Prime"}])
+                }
+                else{
+                    reject("subscription function error")
+                }
+            },2000)
+        })    
+       }
+       function totalCost(param){
+        return new Promise((resolve , reject)=>{
+            setTimeout(()=>{
+                if(1){
+                    resolve(param.length*100)
+                }
+                else{
+                    reject("subscription function error")
+                }
+            },2000)
+        })    
+       }
+       // async await function
+       async function main() {
+        try{
+            let userId = await user(1)
+            let subscriptionChannels = await subscription(userId)
+            let cost = await totalCost(subscriptionChannels)
+            console.log(" Total cost ",cost)
+        }
+        catch(error){
+            console.log(error)
+        }
+       }
+       console.log(main())
+    </script>
+</body>
+</html>
